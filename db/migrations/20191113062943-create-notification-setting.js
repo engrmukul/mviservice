@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Notification_settings', {
+    return queryInterface.createTable('notification_settings', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,7 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       SMS: {
-        type: Sequelize.STRING
+        type: Sequelize.BOOLEAN
+      },
+      EMAIL: {
+        type: Sequelize.BOOLEAN
+      },
+      CALL: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
