@@ -1,4 +1,4 @@
-const userController = require('../controller/user');
+const vehicleController = require('../controller/vehicle');
 module.exports = (app) => {
 
     app.get('/api', (req, res) => {
@@ -7,7 +7,5 @@ module.exports = (app) => {
         })
     })
 
-    app.post('/api/user/create', userController.create);
-
-    app.put('/api/user/:userId', userController.update);
+    app.get('/api/vehicle/:reg_number', vehicleController.findOne);
 }
