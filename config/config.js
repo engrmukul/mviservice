@@ -2,10 +2,10 @@ const fs = require('fs');
 
 module.exports = {
   development: {
-    username: 'database_dev',
-    password: 'database_dev',
-    database: 'database_dev',
-    host: '127.0.0.1',
+    username: 'exasofrn_mukul',
+    password: '+QtS_.GY16CP+FD(n!',
+    database: 'exasofrn_mukul',
+    host: '162.213.251.226',
     dialect: 'mysql'
   },
   test: {

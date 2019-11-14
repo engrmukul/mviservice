@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Vehicle_information = sequelize.define('Vehicle_information', {
     VehicleNumber: DataTypes.STRING,
-    VehicleType: DataTypes.ENUM,
+    VehicleType: DataTypes.ENUM('Insured','Expired','Not Insured'),
     ManufacturerName: DataTypes.STRING,
     ModelName: DataTypes.STRING,
     YearManufacturer: DataTypes.STRING,
