@@ -1,4 +1,4 @@
-const vehicleController = require('../controller/vehicle');
+const vehicleController = require('../controller/vehicleController');
 module.exports = (app) => {
 
     app.get('/api', (req, res) => {
@@ -7,5 +7,5 @@ module.exports = (app) => {
         })
     })
 
-    app.get('/api/vehicle/:reg_number', vehicleController.findOne);
+    app.get('/api/vehicle/:reg_number', vehicleController.checkInsuranceExistance);
 }
