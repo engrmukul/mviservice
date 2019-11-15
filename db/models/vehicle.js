@@ -1,32 +1,28 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Vehicle = sequelize.define('Vehicle', {
-    RegNumber: DataTypes.STRING,
-    Mobile: DataTypes.STRING
-  }, {});
-  Vehicle.associate = function(models) {
-    // associations can be defined here
-  };
-  return Vehicle;
-};
+    const vehicle = sequelize.define('vehicle', {
+        RegNumber: DataTypes.STRING,
+        Mobile: DataTypes.STRING
+    }, {});
+    vehicle.associate = function (models) {
+        // associations can be defined here
+    };
+    vehicle.getVehicleByRegNumber = function (data) {
+        return vehicle.findOne({
+            where: {
+                RegNumber: data.RegNumber,
+                Mobile: data.Mobile
+            }
+        });
+    };
 
-exports.findOne = (req, res) => {
-  Vehicle.findByPk(req.params.reg_number)
-      .then(vehicle => {
-          if (!vehicle) {
-              return res.status(404).send({
-                  message: "vehicle not found with reg_number " + req.params.reg_number
-              });
-          }
-          res.send(vehicle);
-      }).catch(err => {
-          if (err.kind === 'ObjectId') {
-              return res.status(404).send({
-                  message: "vehicle not found with reg_number " + req.params.reg_number
-              });
-          }
-          return res.status(500).send({
-              message: "Error retrieving vehicle with reg_number " + req.params.reg_number
-          });
-      });
+    vehicle.createVehicle = function (data) {
+        var model = {};
+        if (data.VehicleNumber) model.RegNumber = data.VehicleNumber.trim();
+        if (data.Mobile) model.Mobile = data.Mobile.trim();
+            
+        return vehicle.create(model);
+      };
+
+    return vehicle;
 };

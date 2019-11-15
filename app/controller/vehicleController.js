@@ -1,5 +1,20 @@
-const Vehicle = require('../models/vehicleModel');
+'use strict';
+const Vehicle = require("../models/vehicleModel");
 
 exports.checkInsuranceExistance = (req, res) => {
-    Vehicle.checkInsuranceExistance(req.params.reg_number);
+    return (new Vehicle()).getVehicleByRegNumber(req)
+    .then((vehicle) => {
+        res.status(200).send({
+            success: true,
+            message: "vehicle get succeeded.",
+            data: vehicle
+        })
+    })
+    .catch((errors) => {
+        res.status(400).send({
+            success: false,
+            message: "vehicle get failed.",
+            errors: Array.isArray(errors) == true ? errors : [{msg: errors.message}]
+        })
+    })
 };
