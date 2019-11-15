@@ -6,6 +6,10 @@ function Vehicle() {
         const data = { ...req.body};
         return db.vehicle.getVehicleByRegNumber(data);
     };
+    this.createVehicle = async (req) => {
+        const data = { ...req.body};
+        return db.vehicle.createVehicle(data);
+    };
     // this.getCompany = async () => {
     //     return db.insurance_company.getCompany();
     // };

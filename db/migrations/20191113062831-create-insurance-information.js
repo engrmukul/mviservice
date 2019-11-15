@@ -8,8 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      VehicleNumber: {
+        type: Sequelize.STRING
+      },
       CurrentStatus: {
-        type: Sequelize.ENUM('Insured','Expired','Not Insured')
+        type: Sequelize.ENUM('Insured', 'Expired', 'Not Insured')
       },
       CICN: {
         type: Sequelize.STRING

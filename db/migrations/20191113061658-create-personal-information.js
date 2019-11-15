@@ -7,6 +7,9 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+       VehicleNumber: {
+        type: Sequelize.STRING
       }, 
       FullName: {
         type: Sequelize.STRING

@@ -1,6 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const insurance_information = sequelize.define('insurance_information', {
+    VehicleNumber: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true
+    },
     CurrentStatus: DataTypes.STRING,
     CICN: DataTypes.STRING,           //Current Insurance Company Name
     ExpireyDate: DataTypes.DATEONLY,
@@ -11,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   insurance_information.createInsuranceInformation = function (data) {
     var model = {};
+    if (data.VehicleNumber) model.VehicleNumber = data.VehicleNumber.trim();
     if (data.CurrentStatus) model.CurrentStatus = data.CurrentStatus.trim();
     if (data.CICN) model.CICN = data.CICN.trim();
     if (data.ExpireyDate) model.ExpireyDate = data.ExpireyDate.trim();
@@ -25,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
 
   insurance_information.updateInsuranceInformationByVehicleNumber = function (data) {
     var model = {};
+    if (data.VehicleNumber) model.VehicleNumber = data.VehicleNumber.trim();
     if (data.CurrentStatus) model.CurrentStatus = data.CurrentStatus.trim();
     if (data.CICN) model.CICN = data.CICN.trim();
     if (data.ExpireyDate) model.ExpireyDate = data.ExpireyDate.trim();

@@ -2,6 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const personal_information = sequelize.define('personal_information', {
     FullName: DataTypes.STRING,
+    VehicleNumber: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true
+    },
     FathersName: DataTypes.STRING,
     MothersName: DataTypes.STRING,
     DateOfBirth: DataTypes.STRING,
@@ -23,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 
   personal_information.createPersonalInformation = function (data) {
     var model = {};
+    if (data.VehicleNumber) model.VehicleNumber = data.VehicleNumber.trim();
     if (data.FullName) model.FullName = data.FullName.trim();
     if (data.FathersName) model.FathersName = data.FathersName.trim();
     if (data.MothersName) model.MothersName = data.MothersName.trim();
@@ -46,6 +52,7 @@ module.exports = (sequelize, DataTypes) => {
 
   personal_information.updatePersonalInformationByVehicleNumber = function (data) {
     var model = {};
+    if (data.VehicleNumber) model.VehicleNumber = data.VehicleNumber.trim();
     if (data.FullName) model.FullName = data.FullName.trim();
     if (data.FathersName) model.FathersName = data.FathersName.trim();
     if (data.MothersName) model.MothersName = data.MothersName.trim();

@@ -40,6 +40,7 @@ exports.getRegistrationByVehicleNumber = (req, res) => {
 exports.updatePersonalInformationByVehicleNumber = (req, res) => {
     return (new Registration()).updatePersonalInformationByVehicleNumber(req)
     .then((registration) => {
+        console.log(registration);
         res.status(200).send({
             success: true,
             message: "personal information update succeeded.",

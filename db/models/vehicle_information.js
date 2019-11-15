@@ -1,7 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const vehicle_information = sequelize.define('vehicle_information', {
-    VehicleNumber: DataTypes.STRING,
+    VehicleNumber: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true
+    },
     VehicleType: DataTypes.ENUM('Motorcycle','Auto','Rickshaw', 'Car', 'SUV / Micro Bus', 'Bus', 'Truck'),
     ManufacturerName: DataTypes.STRING,
     ModelName: DataTypes.STRING,

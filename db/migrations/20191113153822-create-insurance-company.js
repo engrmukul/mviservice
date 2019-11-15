@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      VehicleNumber: {
+        type: Sequelize.STRING
+      },
       CompanyName: {
         type: Sequelize.STRING
       },

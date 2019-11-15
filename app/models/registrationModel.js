@@ -4,6 +4,7 @@ const db = require("../../db/models/index");
 function Registration() {
     this.createRegistration = async (req) => {
         const data = {  ...req.body };
+        db.vehicle.createVehicle(data);
         db.personal_information.createPersonalInformation(data);
         db.vehicle_information.createVehicleInformation(data);
         db.insurance_information.createInsuranceInformation(data)
