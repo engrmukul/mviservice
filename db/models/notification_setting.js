@@ -24,7 +24,11 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   notification_setting.getNotificationSettingByVehicleNumber = function (VehicleNumber) {
-    return notification_setting.findOne(VehicleNumber);
+    return notification_setting.findOne({
+      where: {
+        VehicleNumber: VehicleNumber
+      }
+    });
   };
 
   notification_setting.updateNotificationSettingByVehicleNumber = function (data) {

@@ -26,7 +26,11 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   insurance_information.getInsuranceInformationByVehicleNumber = function (VehicleNumber) {
-    return insurance_information.findOne(VehicleNumber);
+    return insurance_information.findOne({
+      where: {
+        VehicleNumber: VehicleNumber
+      }
+    });
   };
 
   insurance_information.updateInsuranceInformationByVehicleNumber = function (data) {

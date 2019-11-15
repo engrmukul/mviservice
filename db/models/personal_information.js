@@ -47,7 +47,11 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   personal_information.getPersonalInformationByVehicleNumber = function (VehicleNumber) {
-    return personal_information.findOne(VehicleNumber);
+    return personal_information.findOne({
+      where: {
+        VehicleNumber: VehicleNumber
+      }
+    });
   };
 
   personal_information.updatePersonalInformationByVehicleNumber = function (data) {

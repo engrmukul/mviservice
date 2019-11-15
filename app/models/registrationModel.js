@@ -12,7 +12,12 @@ function Registration() {
 
     };
     this.getRegistrationByVehicleNumber = async (VehicleNumber) => {
-        return db.personal_information.getRegistrationByVehicleNumber(VehicleNumber); //return join data
+        var reg = {}
+        reg.personal  = await db.personal_information.getPersonalInformationByVehicleNumber(VehicleNumber);
+        reg.vehicle   = await db.vehicle_information.getVehicleInformationByVehicleNumber(VehicleNumber);
+        reg.insurance = await db.insurance_information.getInsuranceInformationByVehicleNumber(VehicleNumber);
+        reg.settings  = await db.notification_setting.getNotificationSettingByVehicleNumber(VehicleNumber);
+        return reg;
     };
     this.updatePersonalInformationByVehicleNumber = async (req) => {
         const data = { ...req.body  };
