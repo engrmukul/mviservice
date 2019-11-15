@@ -12,6 +12,10 @@ function Insurance() {
     this.getCompanyById = async (id) => {
         return db.insurance_company.getCompanyById(id);
     };
+    this.updateCompanyById = async (req) => {
+        const data = { ...req.body};
+        return db.insurance_company.updateCompany(data);
+    };
     this.deleteCompanyById = async (id) => {
         return db.insurance_company.deleteCompanyById(id);
     };

@@ -55,6 +55,24 @@ exports.getInsuranceById = (req, res) => {
     })
 };
 
+exports.updateInsuranceById = (req, res) => {
+    return (new Insurance()).updateCompanyById(req)
+    .then((insurance) => {
+        res.status(200).send({
+            success: true,
+            message: "insurance update succeeded.",
+            data: insurance
+        })
+    })
+    .catch((errors) => {
+        res.status(400).send({
+            success: false,
+            message: "insurance update failed.",
+            errors: Array.isArray(errors) == true ? errors : [{msg: errors.message}]
+        })
+    })
+};
+
 exports.deleteInsuranceById = (req, res) => {
     return (new Insurance()).deleteCompanyById(req.params.id)
     .then((insurance) => {

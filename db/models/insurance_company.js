@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     Email: DataTypes.STRING,
     Address: DataTypes.STRING
   }, {});
-  insurance_company.associate = function(models) {
+  insurance_company.associate = function (models) {
     // associations can be defined here
   };
   insurance_company.createCompany = function (data) {
@@ -16,19 +16,31 @@ module.exports = (sequelize, DataTypes) => {
     if (data.Email) model.Email = data.Email.trim();
     if (data.Address) model.Address = data.Address.trim();
     return insurance_company.create(model);
-};
-insurance_company.getCompany = function () {
-  return insurance_company.findAll();
-};
-insurance_company.getCompanyById = function (id) {
-  return insurance_company.findByPk(id);
-};
-insurance_company.deleteCompanyById = function (id) {
-  return insurance_company.destroy({
-    where: {
-      id:id
-    }
-  });
-};
+  };
+  insurance_company.getCompany = function () {
+    return insurance_company.findAll();
+  };
+  insurance_company.getCompanyById = function (id) {
+    return insurance_company.findByPk(id);
+  };
+  insurance_company.updateCompany = function (data) {
+    var model = {};
+    if (data.CompanyName) model.CompanyName = data.CompanyName.trim();
+    if (data.Phone) model.Phone = data.Phone.trim();
+    if (data.Email) model.Email = data.Email.trim();
+    if (data.Address) model.Address = data.Address.trim();
+    return insurance_company.update(model, {
+      where: {
+        id: data.id
+      }
+    });
+  };
+  insurance_company.deleteCompanyById = function (id) {
+    return insurance_company.destroy({
+      where: {
+        id: id
+      }
+    });
+  };
   return insurance_company;
 };
