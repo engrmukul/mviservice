@@ -2,6 +2,8 @@ const vehicleController = require('../controller/vehicleController');
 const insuranceController = require("../controller/insuranceController");
 const geocodeController = require("../controller/geocodeController");
 const registrationController = require("../controller/registrationController");
+const loginController = require("../controller/loginController");
+
 
 module.exports = (app) => {
 
@@ -34,6 +36,12 @@ module.exports = (app) => {
     app.put('/api/update/vehicle',registrationController.updateVehicleInformationByVehicleNumber);
     app.put('/api/update/insurance',registrationController.updateInsuranceInformationByVehicleNumber);
     app.put('/api/update/settings',registrationController.updateNotificationSettingByVehicleNumber);
+
+
+
+    //ADMIN ROUTE
+    app.post('/api/login',loginController.login);
+
 
     
 }
