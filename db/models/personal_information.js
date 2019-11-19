@@ -54,6 +54,10 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  personal_information.getUsers = function () {
+    return personal_information.findAll();
+  };
+
   personal_information.updatePersonalInformationByVehicleNumber = function (data) {
     var model = {};
     if (data.VehicleNumber) model.VehicleNumber = data.VehicleNumber.trim();

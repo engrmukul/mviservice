@@ -33,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  insurance_information.getInsurances = function () {
+    return insurance_information.findAll({ limit: 10 });
+  };
+
   insurance_information.updateInsuranceInformationByVehicleNumber = function (data) {
     var model = {};
     if (data.VehicleNumber) model.VehicleNumber = data.VehicleNumber.trim();

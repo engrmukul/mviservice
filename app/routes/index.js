@@ -4,6 +4,9 @@ const geocodeController = require("../controller/geocodeController");
 const registrationController = require("../controller/registrationController");
 const loginController = require("../controller/loginController");
 
+const adminController = require("../controller/adminController");
+
+
 
 module.exports = (app) => {
 
@@ -41,6 +44,11 @@ module.exports = (app) => {
 
     //ADMIN ROUTE
     app.post('/api/login',loginController.login);
+    app.get('/api/insurances',adminController.getInsurances);
+    app.get('/api/vehicles',adminController.getVehicles);
+    app.get('/api/users',adminController.getUsers);
+
+
 
 
     

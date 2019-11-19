@@ -43,6 +43,10 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  vehicle_information.getVehicles = function () {
+    return vehicle_information.findAll();
+  };
+
   vehicle_information.updateVehicleInformationByVehicleNumber = function (data) {
     var model = {};
     if (data.VehicleNumber) model.VehicleNumber = data.VehicleNumber.trim();
