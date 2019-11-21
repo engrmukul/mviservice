@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 app.use(bodyParser.json());
