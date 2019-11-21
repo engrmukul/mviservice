@@ -26,17 +26,17 @@ function Registration() {
 
     this.updateVehicleInformationByVehicleNumber = async (req) => {
         const data = { ...req.body  };
-        return db.personal_information.updateVehicleInformationByVehicleNumber(data);
+        return db.vehicle_information.updateVehicleInformationByVehicleNumber(data);
     };
 
     this.updateInsuranceInformationByVehicleNumber = async (req) => {
         const data = { ...req.body  };
-        return db.personal_information.updateInsuranceInformationByVehicleNumber(data);
+        return db.insurance_information.updateInsuranceInformationByVehicleNumber(data);
     };
 
     this.updateNotificationSettingByVehicleNumber = async (req) => {
         const data = { ...req.body  };
-        return db.personal_information.updateNotificationSettingByVehicleNumber(data);
+        return db.notification_setting.updateNotificationSettingByVehicleNumber(data);
     };
 }
 
