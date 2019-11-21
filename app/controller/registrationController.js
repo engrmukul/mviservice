@@ -5,7 +5,7 @@ exports.createRegistration = (req, res) => {
 
     var startup_image = req.files.UploadPicture;
     // Use the mv() method to place the file somewhere on your server
-    startup_image.mv(req.baseUrl+'images/' + startup_image.name, function (err) {
+    startup_image.mv(__dirname+'uploads/images/' + startup_image.name, function (err) {
         if (err) {
             console.log(err);
         } else {
