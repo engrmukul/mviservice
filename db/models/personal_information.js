@@ -73,6 +73,7 @@ module.exports = (sequelize, DataTypes) => {
     if (data.DistrictId) model.DistrictId = data.DistrictId.trim();
     if (data.ThanaId) model.ThanaId = data.ThanaId.trim();
     if (data.PostCode) model.PostCode = data.PostCode.trim();
+    if (data.UploadPicture) model.UploadPicture = data.UploadPicture.trim();
     if (data.Lat) model.Lat = data.Lat.trim();
     if (data.Long) model.Long = data.Long.trim();
 
