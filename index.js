@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = path = require('path');
 const fileUpload = require('express-fileupload');
 
 const app = express();
