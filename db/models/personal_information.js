@@ -23,7 +23,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   personal_information.associate = function (models) {
-    // associations can be defined here
+    personal_information.belongsTo(models.division, {foreignKey: 'DivisionId', as: 'division'})
+    personal_information.belongsTo(models.district, {foreignKey: 'DistrictId', as: 'district'})
+    personal_information.belongsTo(models.upazila, {foreignKey: 'ThanaId', as: 'upazila'})
   };
 
   personal_information.createPersonalInformation = function (data) {
@@ -51,8 +53,10 @@ module.exports = (sequelize, DataTypes) => {
     return personal_information.findOne({
       where: {
         VehicleNumber: VehicleNumber
-      }
+      },
+      include: ['division','district','upazila']
     });
+
   };
 
   personal_information.getUsers = function () {
