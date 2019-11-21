@@ -3,7 +3,18 @@ const Registration = require("../models/registrationModel");
 
 exports.createRegistration = (req, res) => {
 
-    console.log(req.files.UploadPicture); // the uploaded file object
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+      }
+    
+      // The name of the input field (i.e. "UploadPicture") is used to retrieve the uploaded file
+      let UploadPicture = req.files.UploadPicture;
+    
+      // Use the mv() method to place the file somewhere on your server
+      UploadPicture.mv('filename.jpg', function(err) {
+        if (err)
+          return res.status(500).send(err);
+    
 
     return (new Registration()).createRegistration(req)
     .then((registration) => {
