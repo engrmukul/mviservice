@@ -59,11 +59,17 @@ exports.updatePersonalInformationByVehicleNumber = (req, res) => {
 exports.updateVehicleInformationByVehicleNumber = (req, res) => {
     return (new Registration()).updateVehicleInformationByVehicleNumber(req)
     .then((registration) => {
-        res.status(200).send({
-            success: true,
-            message: "vehicle information update succeeded.",
-            data: registration
-        })
+        if(registration == 1 ){
+            res.status(200).send({
+                success: true,
+                message: "vehicle information update succeeded."
+            })
+        }else{
+            res.status(201).send({
+                success: false,
+                message: "vehicle information update failed."
+            })
+        } 
     })
     .catch((errors) => {
         res.status(400).send({
