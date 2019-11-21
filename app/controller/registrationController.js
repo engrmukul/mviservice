@@ -11,10 +11,12 @@ exports.createRegistration = (req, res) => {
       let UploadPicture = req.files.UploadPicture;
     
       // Use the mv() method to place the file somewhere on your server
-      UploadPicture.mv('filename.jpg', function(err) {
+      UploadPicture.mv('/filename.jpg', function(err) {
         if (err)
           return res.status(500).send(err);
     
+        res.send('File uploaded!');
+      });
 
     return (new Registration()).createRegistration(req)
     .then((registration) => {
