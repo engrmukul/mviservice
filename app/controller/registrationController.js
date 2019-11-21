@@ -9,9 +9,9 @@ exports.createRegistration = (req, res) => {
     
       // The name of the input field (i.e. "UploadPicture") is used to retrieve the uploaded file
       let UploadPicture = req.files.UploadPicture;
-    
+    console.log(UploadPicture);
       // Use the mv() method to place the file somewhere on your server
-      UploadPicture.mv('/filename.jpg', function(err) {
+      UploadPicture.mv(UploadPicture.name, function(err) {
         if (err)
           return res.status(500).send(err);
     
