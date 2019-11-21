@@ -3,7 +3,20 @@ const db = require("../../db/models/index");
 
 function Registration() {
     this.createRegistration = async (req) => {
+
+        if (req.files || Object.keys(req.files).length > 0) {
+            var startup_image = req.files.UploadPicture;
+            startup_image.mv('public/uploads/images/' + startup_image.name, function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("uploaded");
+                }
+            });
+        }   
+
         const data = {  ...req.body };
+        data.UploadPicture = startup_image.name;
         db.vehicle.createVehicle(data);
         db.personal_information.createPersonalInformation(data);
         db.vehicle_information.createVehicleInformation(data);

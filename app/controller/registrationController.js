@@ -2,17 +2,6 @@
 const Registration = require("../models/registrationModel");
 
 exports.createRegistration = (req, res) => {
-
-    var startup_image = req.files.UploadPicture;
-    // Use the mv() method to place the file somewhere on your server
-    startup_image.mv('public/uploads/images/' + startup_image.name, function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("uploaded");
-        }
-    });
-
     return (new Registration()).createRegistration(req)
         .then((registration) => {
             res.status(200).send({
