@@ -2,6 +2,9 @@
 const Registration = require("../models/registrationModel");
 
 exports.createRegistration = (req, res) => {
+
+    console.log(req.files.UploadPicture); // the uploaded file object
+
     return (new Registration()).createRegistration(req)
     .then((registration) => {
         res.status(200).send({
