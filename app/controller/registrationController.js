@@ -39,13 +39,18 @@ exports.getRegistrationByVehicleNumber = (req, res) => {
 
 exports.updatePersonalInformationByVehicleNumber = (req, res) => {
     return (new Registration()).updatePersonalInformationByVehicleNumber(req)
-    .then((registration) => {
-        console.log(registration);
-        res.status(200).send({
-            success: true,
-            message: "personal information update succeeded.",
-            data: registration
-        })
+    .then((personal) => {
+        if(personal == 1){
+            res.status(200).send({
+                success: true,
+                message: "personal information update succeeded."
+            })
+        }else{
+            res.status(201).send({
+                success: false,
+                message: "personal information update failed."
+            })
+        }
     })
     .catch((errors) => {
         res.status(400).send({
@@ -58,8 +63,8 @@ exports.updatePersonalInformationByVehicleNumber = (req, res) => {
 
 exports.updateVehicleInformationByVehicleNumber = (req, res) => {
     return (new Registration()).updateVehicleInformationByVehicleNumber(req)
-    .then((registration) => {
-        if(registration == 1 ){
+    .then((vehicle) => {
+        if(vehicle == 1 ){
             res.status(200).send({
                 success: true,
                 message: "vehicle information update succeeded."
@@ -82,12 +87,18 @@ exports.updateVehicleInformationByVehicleNumber = (req, res) => {
 
 exports.updateInsuranceInformationByVehicleNumber = (req, res) => {
     return (new Registration()).updateInsuranceInformationByVehicleNumber(req)
-    .then((registration) => {
-        res.status(200).send({
-            success: true,
-            message: "insurance information update succeeded.",
-            data: registration
-        })
+    .then((insurance) => {
+        if(insurance == 1){
+            res.status(200).send({
+                success: true,
+                message: "insurance information update succeeded."
+            })
+        }else{
+            res.status(201).send({
+                success: false,
+                message: "insurance information update succeeded."
+            })
+        }
     })
     .catch((errors) => {
         res.status(400).send({
@@ -100,12 +111,18 @@ exports.updateInsuranceInformationByVehicleNumber = (req, res) => {
 
 exports.updateNotificationSettingByVehicleNumber = (req, res) => {
     return (new Registration()).updateNotificationSettingByVehicleNumber(req)
-    .then((registration) => {
-        res.status(200).send({
-            success: true,
-            message: "notification information update succeeded.",
-            data: registration
-        })
+    .then((notification) => {
+        if(notification == 1){
+            res.status(200).send({
+                success: true,
+                message: "notification information update succeeded."
+            })
+        }else{
+            res.status(201).send({
+                success: false,
+                message: "notification information update succeeded."
+            })
+        }
     })
     .catch((errors) => {
         res.status(400).send({
