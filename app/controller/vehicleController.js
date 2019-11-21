@@ -7,7 +7,7 @@ exports.checkInsuranceExistance = (req, res) => {
         res.status(200).send({
             success: true,
             message: "vehicle get succeeded.",
-            data: vehicle
+            data: vehicle ? vehicle : ""
         })
     })
     .catch((errors) => {
